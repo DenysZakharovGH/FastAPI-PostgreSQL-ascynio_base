@@ -1,0 +1,2 @@
+python -m pip install poetry
+python -m poetry add fastapi "uvicorn[standart]" "pydantic[email]" pydantic-settings
