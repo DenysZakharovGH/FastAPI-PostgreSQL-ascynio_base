@@ -4,7 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 from api import router as api_router
 from core.config import settings
-from core.models.db_helper import db_helper
+from core.models import db_helper, Base
 
 
 # as soon as app is async use async manager to specify actions
@@ -12,6 +12,8 @@ from core.models.db_helper import db_helper
 @asynccontextmanager
 async def lifespan(app:FastAPI):
     # here is actions happen on startup
+    async with db_helper.engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
     yield
     print("Dispose engine")
     await db_helper.dispose()
