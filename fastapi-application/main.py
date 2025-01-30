@@ -1,10 +1,25 @@
+from contextlib import asynccontextmanager
+
 import uvicorn
 from fastapi import FastAPI
 from api import router as api_router
 from core.config import settings
+from core.models.db_helper import db_helper
 
 
-app = FastAPI()
+# as soon as app is async use async manager to specify actions
+# which gonna happen on app start and shoutdown
+@asynccontextmanager
+async def lifespan(app:FastAPI):
+    # here is actions happen on startup
+    yield
+    print("Dispose engine")
+    await db_helper.dispose()
+    # Clean up and release resources on shutdown
+
+
+
+app = FastAPI(lifespan=lifespan)
 app.include_router(api_router,
                    prefix=settings.api.prefix)
 
