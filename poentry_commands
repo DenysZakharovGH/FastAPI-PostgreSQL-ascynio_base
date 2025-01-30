@@ -1,2 +1,4 @@
 python -m pip install poetry
 python -m poetry add fastapi "uvicorn[standart]" "pydantic[email]" pydantic-settings
+python -m poetry add "sqlalchemy[asyncio]"
+python -m poetry add asyncpg
