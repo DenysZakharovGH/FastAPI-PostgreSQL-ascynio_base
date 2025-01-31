@@ -1,0 +1,5 @@
+poetry add alembic
+alembic init -t async alembic
+alembic revesion --autogenerate -m "create users table"
+alembic upgrade head
+alembic revision --autogenerate -m "update users table"
