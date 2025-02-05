@@ -10,5 +10,7 @@ Here is a base backend project structure for Python FastAPI app, with almost ful
 - APIRouters and Prefixes
 - Pydentic schemas
 - API views DB connection
+- Basic Auth / Token Auth / Cookie Auth
 
-![image](https://github.com/user-attachments/assets/1336ba38-4cb2-4adf-a7e9-692ca10c5a55)
+![image](https://github.com/user-attachments/assets/9fa1edc1-b00e-4eed-821d-af5d80bcfc00)
+
